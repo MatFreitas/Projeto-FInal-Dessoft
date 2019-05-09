@@ -1,5 +1,5 @@
 #Projeto Dessoft
-import player
+
 
 # Inicialização do Pygame.
 pygame.init()
