@@ -59,7 +59,7 @@ class Player1(pygame.sprite.Sprite):
         #Velocidade
         self.speedx=0
         
-     # Metodo que atualiza a posição da navinha
+    # Metodo que atualiza a posição da navinha
     def update(self):
         self.rect.x += self.speedx
         
@@ -94,13 +94,26 @@ class CPU(pygame.sprite.Sprite):
         #Centraliza embaixo da tela
         self.rect.centerx= WIDTH/4
         self.rect.bottom= HEIGHT-1200
+        
+        #Velocidade
+        self.speedx=0
+    
+    # Metodo que atualiza a posição da navinha
+    def update(self):
+        self.rect.x += self.speedx
+        
+        # Mantem dentro da tela
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+        if self.rect.left < 0:
+            self.rect.left = 0
 
 player1=Player1()
 player2=CPU()
 # Cria um grupo de sprites e adiciona a nave.
 all_sprites = pygame.sprite.Group()
-all_sprites.add(Player1)
-all_sprites.add(CPU)
+all_sprites.add(player1)
+all_sprites.add(player2)
         
 # Comando para evitar travamentos.
 try:
