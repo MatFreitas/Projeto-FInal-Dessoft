@@ -40,7 +40,7 @@ class CPU(pygame.sprite.Sprite):
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
-        self.image= pygame.transform.scale(player_img,(50,38))
+        self.image= pygame.transform.scale(player_img,(150,200))
         
         #Deixando transparente
         self.image.set_colorkey(BLACK)
@@ -49,8 +49,8 @@ class CPU(pygame.sprite.Sprite):
         self.rect= self.image.get_rect()
         
         #Centraliza embaixo da tela
-        self.rect.centerx= WIDTH/4
-        self.rect.bottom= HEIGHT-1200
+        self.rect.centerx= WIDTH-200
+        self.rect.bottom= HEIGHT-66
         
         #Velocidade
         self.speedx=0
