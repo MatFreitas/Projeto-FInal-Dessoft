@@ -92,27 +92,22 @@ try:
             # Verifica se apertou alguma tecla.
             if event.type == pygame.KEYDOWN:
                 # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_A:
                     player1.speedx = -7
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_D:
                     player1.speedx = 7
-                if event.key == pygame.K_UP:
-                    player1.speedy = 7
-                if event.key == pygame.K_DOWN:
-                    player1.speedy = -7
+                
+                
                 
                     
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
                 # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_A:
                     player1.speedx = 0
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_D:
                     player1.speedx = 0
-                if event.key == pygame.K_UP:
-                    player1.speedy = 0
-                if event.key == pygame.K_DOWN:
-                    player1.speedy = 0
+                
         
         all_sprites.update()
     
