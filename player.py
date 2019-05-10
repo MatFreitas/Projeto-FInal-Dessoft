@@ -1,23 +1,24 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue May  7 17:34:20 2019
+Created on Fri May 10 10:53:44 2019
 
-@author: matfs
+@author: thiagodavid
 """
-# Estabelece a pasta que contem as figuras.
-img_dir = path.join(path.dirname(__file__), 'img')
+import pygame
+from os import path
+from init import BLACK, img_dir, WIDTH, HEIGHT
 
-#Classe do jogador que representa a nave
-class Player(pygame.sprite.Sprite):
+class Player1(pygame.sprite.Sprite):
     
     #Construtor da classe
-    def __init__(self, nomeimg):
+    def __init__(self):
         
         #Construtor da classe pai (Sprite)
         pygame.sprite.Sprite.__init__(self)
         
         #Carregando a imagem de fundo
-        player_img= pygame.image.load(path.join(img_dir,nomeimg)).convert()
+        player_img= pygame.image.load(path.join(img_dir,"CAM.png")).convert()
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
@@ -30,5 +31,18 @@ class Player(pygame.sprite.Sprite):
         self.rect= self.image.get_rect()
         
         #Centraliza embaixo da tela
-        self.rect.centerx= WIDTH/2
-        self.rect.bottom= HEIGHT-10
+        self.rect.centerx= WIDTH*(3/4)
+        self.rect.bottom= HEIGHT-1200
+        
+        #Velocidade
+        self.speedx=0
+        
+     # Metodo que atualiza a posição da navinha
+    def update(self):
+        self.rect.x += self.speedx
+        
+        # Mantem dentro da tela
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+        if self.rect.left < 0:
+            self.rect.left = 0
