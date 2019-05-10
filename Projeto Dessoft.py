@@ -104,6 +104,8 @@ try:
                     Player1.speedx = 0
                 if event.key == pygame.K_RIGHT:
                     Player1.speedx = 0
+        
+        all_sprites.update()
     
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
