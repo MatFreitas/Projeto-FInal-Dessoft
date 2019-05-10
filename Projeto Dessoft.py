@@ -40,7 +40,7 @@ class CPU(pygame.sprite.Sprite):
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
-        self.image= pygame.transform.scale(player_img(50,38))
+        self.image= pygame.transform.scale(player_img,(50,38))
         
         #Deixando transparente
         self.image.set_colorkey(BLACK)
