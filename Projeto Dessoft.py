@@ -1,37 +1,46 @@
 #Projeto Dessoft
+import pygame
+from os import path
 
+WIDTH=2000
+HEIGHT=1264
+
+BLACK = (0, 0, 0)
+FPS=60
 
 # Inicialização do Pygame.
 pygame.init()
 pygame.mixer.init()
 
+# Estabelece a pasta que contem as figuras.
+img_dir = path.join(path.dirname(__file__), 'img')
+
 # Tamanho da tela.
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # Nome do jogo
-pygame.display.set_caption("Asteroids")
+pygame.display.set_caption("FutCabeça")
 
 # Variável para o ajuste de velocidade
 clock = pygame.time.Clock()
 
 # Carrega o fundo do jogo
-background = pygame.image.load(path.join(img_dir, 'starfield.png')).convert()
+background = pygame.image.load(path.join(img_dir, 'ESTADIO.png')).convert()
 background_rect = background.get_rect()
 
-# Estabelece a pasta que contem as figuras.
-img_dir = path.join(path.dirname(__file__), 'img')
+
 
 #Classe do jogador que representa a nave
-class Player(pygame.sprite.Sprite):
+class Player1(pygame.sprite.Sprite):
     
     #Construtor da classe
-    def __init__(self, nomeimg):
+    def __init__(self):
         
         #Construtor da classe pai (Sprite)
         pygame.sprite.Sprite.__init__(self)
         
         #Carregando a imagem de fundo
-        player_img= pygame.image.load(path.join(img_dir,nomeimg)).convert()
+        player_img= pygame.image.load(path.join(img_dir,"CAM.png")).convert()
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
@@ -44,10 +53,99 @@ class Player(pygame.sprite.Sprite):
         self.rect= self.image.get_rect()
         
         #Centraliza embaixo da tela
-        self.rect.centerx= WIDTH/2
-        self.rect.bottom= HEIGHT-10
+        self.rect.centerx= WIDTH*(3/4)
+        self.rect.bottom= HEIGHT-1200
+        
+        #Velocidade
+        self.speedx=0
+        
+     # Metodo que atualiza a posição da navinha
+    def update(self):
+        self.rect.x += self.speedx
+        
+        # Mantem dentro da tela
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+        if self.rect.left < 0:
+            self.rect.left = 0
+
+#Classe do jogador que representa a nave
+class CPU(pygame.sprite.Sprite):
+    
+    #Construtor da classe
+    def __init__(self):
+        
+        #Construtor da classe pai (Sprite)
+        pygame.sprite.Sprite.__init__(self)
+        
+        #Carregando a imagem de fundo
+        player_img= pygame.image.load(path.join(img_dir,"SAO.png")).convert()
+        self.image= player_img
+        
+        #Diminuindo o tamanho da imagem
+        self.image= pygame.transform.scale(player_img(50,38))
+        
+        #Deixando transparente
+        self.image.set_colorkey(BLACK)
+        
+        #Detalhes sobre o posicionaento
+        self.rect= self.image.get_rect()
+        
+        #Centraliza embaixo da tela
+        self.rect.centerx= WIDTH/4
+        self.rect.bottom= HEIGHT-1200
+
+player1=Player1()
+player2=CPU()
+# Cria um grupo de sprites e adiciona a nave.
+all_sprites = pygame.sprite.Group()
+all_sprites.add(Player1)
+all_sprites.add(CPU)
+        
+# Comando para evitar travamentos.
+try:
+    
+    # Loop principal.
+    running = True
+    while running:
+        
+        # Ajusta a velocidade do jogo.
+        clock.tick(FPS)
+        
+        # Processa os eventos (mouse, teclado, botão, etc).
+        for event in pygame.event.get():
+            
+            # Verifica se foi fechado
+            if event.type == pygame.QUIT:
+                running = False
+            
+            # Verifica se apertou alguma tecla.
+            if event.type == pygame.KEYDOWN:
+                # Dependendo da tecla, altera a velocidade.
+                if event.key == pygame.K_LEFT:
+                    Player1.speedx = -4
+                if event.key == pygame.K_RIGHT:
+                    Player1.speedx = 4
+                    
+            # Verifica se soltou alguma tecla.
+            if event.type == pygame.KEYUP:
+                # Dependendo da tecla, altera a velocidade.
+                if event.key == pygame.K_LEFT:
+                    Player1.speedx = 0
+                if event.key == pygame.K_RIGHT:
+                    Player1.speedx = 0
+    
+        # A cada loop, redesenha o fundo e os sprites
+        screen.fill(BLACK)
+        screen.blit(background, background_rect)
+        all_sprites.draw(screen)
+        
+        # Depois de desenhar tudo, inverte o display.
+        pygame.display.flip()
+        
+finally:
+    pygame.quit()
 
 
 
-p1 = player.Player("saopaulo.png")
-p2 = player.Player("palmeiras.png")
+
