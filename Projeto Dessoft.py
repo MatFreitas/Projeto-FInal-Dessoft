@@ -96,6 +96,11 @@ try:
                     player1.speedx = -7
                 if event.key == pygame.K_RIGHT:
                     player1.speedx = 7
+                if event.key == pygame.K_UP:
+                    player1.speedy = 7
+                if event.key == pygame.K_DOWN:
+                    player1.speedy = -7
+                
                     
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
@@ -104,6 +109,10 @@ try:
                     player1.speedx = 0
                 if event.key == pygame.K_RIGHT:
                     player1.speedx = 0
+                if event.key == pygame.K_UP:
+                    player1.speedy = 0
+                if event.key == pygame.K_DOWN:
+                    player1.speedy = 0
         
         all_sprites.update()
     
