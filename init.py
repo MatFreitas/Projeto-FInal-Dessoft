@@ -8,8 +8,8 @@ Created on Fri May 10 10:54:57 2019
 
 from os import path
 
-WIDTH=2000
-HEIGHT=1264
+WIDTH=1200
+HEIGHT=800
 
 BLACK = (0, 0, 0)
 FPS=60
