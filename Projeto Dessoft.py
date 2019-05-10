@@ -20,7 +20,7 @@ pygame.display.set_caption("FutCabeça")
 clock = pygame.time.Clock()
 
 # Carrega o fundo do jogo
-background = pygame.image.load(path.join(img_dir, 'ESTADIO.png')).convert()
+background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
 background_rect = background.get_rect()
 
 
