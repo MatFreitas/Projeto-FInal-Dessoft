@@ -21,11 +21,11 @@ class Player1(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         #Carregando a imagem de fundo
-        player_img= pygame.image.load(path.join(img_dir,"CAM.png")).convert()
+        player_img= pygame.image.load(path.join(img_dir,"ROONEY_v2.png")).convert()
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
-        self.image= pygame.transform.scale(player_img,(150,200))
+        self.image= pygame.transform.scale(player_img,(200,200))
         
         #Deixando transparente
         self.image.set_colorkey(BLACK)

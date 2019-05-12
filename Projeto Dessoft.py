@@ -36,7 +36,7 @@ class CPU(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         #Carregando a imagem de fundo
-        player_img= pygame.image.load(path.join(img_dir,"SAO.png")).convert()
+        player_img= pygame.image.load(path.join(img_dir,"CR7_v2.png")).convert()
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
