@@ -96,10 +96,14 @@ try:
                     player1.speedx = -9
                 if event.key == pygame.K_d:
                     player1.speedx = 9
+                if event.key == pygame.K_w:
+                    player1.speedy = 9
                 if event.key == pygame.K_LEFT:
                     player2.speedx = -9
                 if event.key == pygame.K_RIGHT:
                     player2.speedx = 9
+                if event.key == pygame.K_UP:
+                    player2.speedy = 9
                 
                 
                     
@@ -110,10 +114,14 @@ try:
                     player1.speedx = 0
                 if event.key == pygame.K_d:
                     player1.speedx = 0
+                if event.key == pygame.K_w:
+                    player1.speedy = 0
                 if event.key == pygame.K_LEFT:
                     player2.speedx = 0
                 if event.key == pygame.K_RIGHT:
                     player2.speedx = 0
+                if event.key == pygame.K_UP:
+                    player2.speedy = 0
                 
         
         all_sprites.update()
