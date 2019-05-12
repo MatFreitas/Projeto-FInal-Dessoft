@@ -66,6 +66,8 @@ class CPU(pygame.sprite.Sprite):
             self.rect.right = WIDTH
         if self.rect.left < 0:
             self.rect.left = 0
+        if self.rect.top < 0:
+            self.rect.top = 0
 
 player1=Player1()
 player2=CPU()
