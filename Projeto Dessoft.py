@@ -108,6 +108,7 @@ try:
                     player2.speedx = 9
                 if event.key == pygame.K_UP:
                     player2.speedy = -9
+                    
                 
                 
                     
@@ -126,6 +127,9 @@ try:
                     player2.speedx = 0
                 if event.key == pygame.K_UP:
                     player2.speedy = 0
+                    
+                
+                    
                 
         
         all_sprites.update()
