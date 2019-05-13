@@ -53,4 +53,6 @@ class Player1(pygame.sprite.Sprite):
             self.rect.left = 0
         if self.rect.top < 0:
             self.rect.top = 0
+        if self.rect.bottom > HEIGHT - 66:
+            self.rect.bottom = HEIGHT - 66
         
