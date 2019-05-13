@@ -66,8 +66,8 @@ class CPU(pygame.sprite.Sprite):
             self.rect.right = WIDTH
         if self.rect.left < 0:
             self.rect.left = 0
-        if self.rect.top < 0:
-            self.rect.top = 0
+        if self.rect.top < HEIGHT - 470:
+            self.rect.top = HEIGHT - 470
         if self.rect.bottom > HEIGHT - 66:
             self.rect.bottom = HEIGHT - 66
             
