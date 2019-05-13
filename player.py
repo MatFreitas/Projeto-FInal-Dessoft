@@ -25,7 +25,7 @@ class Player1(pygame.sprite.Sprite):
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
-        self.image= pygame.transform.scale(player_img,(200,200))
+        self.image= pygame.transform.scale(player_img,(200,213))
         
         #Deixando transparente
         self.image.set_colorkey(BLACK)
@@ -35,7 +35,7 @@ class Player1(pygame.sprite.Sprite):
         
         #Centraliza embaixo da tela
         self.rect.centerx= WIDTH-1000
-        self.rect.bottom= HEIGHT-66
+        self.rect.bottom= HEIGHT-60
         
         #Velocidade
         self.speedx=0
