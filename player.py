@@ -40,6 +40,7 @@ class Player1(pygame.sprite.Sprite):
         #Velocidade
         self.speedx=0
         self.speedy=0
+        self.pulando = False
         
      # Metodo que atualiza a posição da navinha
     def update(self):
