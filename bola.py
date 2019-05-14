@@ -12,7 +12,7 @@ class Bola(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         #Carregando a imagem de fundo
-        player_img= pygame.image.load(path.join(img_dir,"bola.png")).convert()
+        player_img= pygame.image.load(path.join(img_dir,"bola2.png")).convert()
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
