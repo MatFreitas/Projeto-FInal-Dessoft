@@ -36,6 +36,7 @@ class Player1(pygame.sprite.Sprite):
         #Centraliza embaixo da tela
         self.rect.centerx= WIDTH-1000
         self.rect.bottom= HEIGHT-60
+        self.rect.top = HEIGHT - 470
         
         #Velocidade
         self.speedx=0
@@ -45,6 +46,8 @@ class Player1(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += self.speedx
         self.rect.y += self.speedy
+        
+        self.speedy += 1
         
         # Mantem dentro da tela
         if self.rect.right > WIDTH:
