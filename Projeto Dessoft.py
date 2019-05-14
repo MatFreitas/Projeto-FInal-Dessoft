@@ -132,7 +132,7 @@ try:
                 # Dependendo da tecla, altera a velocidade.
                 if event.key == pygame.K_a:
                     player1.speedx = 0
-                if event.key == pygame.K_d:
+                if event.key == pygame.K_d:         
                     player1.speedx = 0
                 if event.key == pygame.K_w:
                     player1.speedy = 0
@@ -159,7 +159,6 @@ try:
         
 finally:
     pygame.quit()
-
 
 
 
