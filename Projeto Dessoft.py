@@ -59,7 +59,35 @@ try:
                 if event.key == pygame.K_d:
                     player1.speedx = 9
                 if event.key == pygame.K_w:
-                    player1.speedy = -21
+                    player1.speedy = -20
+
+                    while player1.speedy < 0:
+                        
+                        clock.tick(FPS)
+                        all_sprites.update()
+    
+                        # A cada loop, redesenha o fundo e os sprites
+                        screen.fill(BLACK)
+                        screen.blit(background, background_rect)
+                        all_sprites.draw(screen)
+                        
+                        # Depois de desenhar tudo, inverte o display.
+                        pygame.display.flip()
+                        player1.speedy += 1
+                        
+                    while player1.speedy < 20:
+                        
+                        clock.tick(FPS)
+                        all_sprites.update()
+    
+                        # A cada loop, redesenha o fundo e os sprites
+                        screen.fill(BLACK)
+                        screen.blit(background, background_rect)
+                        all_sprites.draw(screen)
+                        
+                        # Depois de desenhar tudo, inverte o display.
+                        pygame.display.flip()
+                        player1.speedy += 1
                         
                 if event.key == pygame.K_LEFT:
                     player2.speedx = -9

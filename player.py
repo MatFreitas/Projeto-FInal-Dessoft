@@ -45,13 +45,6 @@ class Player1(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += self.speedx
         self.rect.y += self.speedy
-        if self.speedy < 0:
-             self.speedy += 1
-        elif self.speedy > 0:
-             self.speedy -= 1
-        elif self.speedy <= -21:
-             self.speedy = 0
-
         
         # Mantem dentro da tela
         if self.rect.right > WIDTH:

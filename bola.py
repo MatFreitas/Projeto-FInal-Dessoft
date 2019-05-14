@@ -25,8 +25,8 @@ class Bola(pygame.sprite.Sprite):
         self.rect= self.image.get_rect()
         
         #Centraliza embaixo da tela
-        self.rect.centerx= WIDTH-400
-        self.rect.bottom= HEIGHT-20
+        self.rect.centerx= WIDTH-600
+        self.rect.bottom= HEIGHT-400
         
         #Velocidade
         self.speedx=0
