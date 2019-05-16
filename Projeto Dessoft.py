@@ -59,9 +59,8 @@ try:
                 if event.key == pygame.K_d:
                     player1.speedx = 9
                 if event.key == pygame.K_w:
-                    
-                    if player1.rect.top == HEIGHT - 470:
-                        player1.speedy = -20
+                    player1.speedy = -20
+                   
 
 #                    while player1.speedy < 0:
 #                        

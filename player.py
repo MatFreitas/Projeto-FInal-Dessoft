@@ -36,7 +36,7 @@ class Player1(pygame.sprite.Sprite):
         #Centraliza embaixo da tela
         self.rect.centerx= WIDTH-1000
         self.rect.bottom= HEIGHT-60
-        self.rect.top = HEIGHT - 470
+        
         
         #Velocidade
         self.speedx=0
