@@ -50,6 +50,9 @@ try:
             if event.type == pygame.QUIT:
                 running = False
             
+            #Velocidade da bola quando o jogo é iniciado
+            bolafut.speedy= 0
+            
             # Verifica se apertou alguma tecla.
             if event.type == pygame.KEYDOWN:
                 
@@ -60,35 +63,6 @@ try:
                     player1.speedx = 9
                 if event.key == pygame.K_w:
                     player1.speedy = -20
-                   
-
-#                    while player1.speedy < 0:
-#                        
-#                        clock.tick(FPS)
-#                        all_sprites.update()
-#    
-#                        # A cada loop, redesenha o fundo e os sprites
-#                        screen.fill(BLACK)
-#                        screen.blit(background, background_rect)
-#                        all_sprites.draw(screen)
-#                        
-#                        # Depois de desenhar tudo, inverte o display.
-#                        pygame.display.flip()
-#                        player1.speedy += 1
-#                        
-#                    while player1.speedy < 20:
-#                        
-#                        clock.tick(FPS)
-#                        all_sprites.update()
-#    
-#                        # A cada loop, redesenha o fundo e os sprites
-#                        screen.fill(BLACK)
-#                        screen.blit(background, background_rect)
-#                        all_sprites.draw(screen)
-#                        
-#                        # Depois de desenhar tudo, inverte o display.
-#                        pygame.display.flip()
-#                        player1.speedy += 1
                         
                 if event.key == pygame.K_LEFT:
                     player2.speedx = -9
@@ -96,35 +70,7 @@ try:
                     player2.speedx = 9
                 if event.key == pygame.K_UP:
                     player2.speedy = -20
-#                    
-#                    while player2.speedy < 0:
-#                        
-#                        clock.tick(FPS)
-#                        all_sprites.update()
-#    
-#                        # A cada loop, redesenha o fundo e os sprites
-#                        screen.fill(BLACK)
-#                        screen.blit(background, background_rect)
-#                        all_sprites.draw(screen)
-#                        
-#                        # Depois de desenhar tudo, inverte o display.
-#                        pygame.display.flip()
-#                        player2.speedy += 1
-#                        
-#                    while player2.speedy < 20:
-#                        
-#                        clock.tick(FPS)
-#                        all_sprites.update()
-#    
-#                        # A cada loop, redesenha o fundo e os sprites
-#                        screen.fill(BLACK)
-#                        screen.blit(background, background_rect)
-#                        all_sprites.draw(screen)
-#                        
-#                        # Depois de desenhar tudo, inverte o display.
-#                        pygame.display.flip()
-#                        player2.speedy += 1
-                        
+                    
                     
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
@@ -150,9 +96,15 @@ try:
         
         #Verifica se houve colisão
         hits = pygame.sprite.collide_rect(player1, player2)
+        hits1 = pygame.sprite.collide_rect(player1, bolafut)
+        hits2 = pygame.sprite.collide_rect(player2, bolafut)
         if hits:
             player1.speedx = -10
             player2.speedx = 10
+        if hits1:
+            bolafut.speedx = 20
+        if hits2:
+            bolafut.speedx = -20
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
         screen.blit(background, background_rect)
