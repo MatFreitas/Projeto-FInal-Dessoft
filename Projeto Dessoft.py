@@ -98,6 +98,8 @@ try:
         hits = pygame.sprite.collide_rect(player1, player2)
         hits1 = pygame.sprite.collide_rect(player1, bolafut)
         hits2 = pygame.sprite.collide_rect(player2, bolafut)
+        
+        #Colisão entre players, player1 e bola, player2 e bola, respectivamente
         if hits:
             player1.speedx = -10
             player2.speedx = 10
@@ -105,6 +107,7 @@ try:
             bolafut.speedx = 20
         if hits2:
             bolafut.speedx = -20
+            
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
         screen.blit(background, background_rect)
