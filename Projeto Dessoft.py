@@ -86,7 +86,7 @@ try:
                 if event.key == pygame.K_w:
                     player1.speedy = 0
                 if event.key == pygame.K_LEFT:
-                    player2.speedx = 0
+                    player2.speeddx = 0
                 if event.key == pygame.K_RIGHT:
                     player2.speedx = 0
                 if event.key == pygame.K_UP:
