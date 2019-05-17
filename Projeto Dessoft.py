@@ -32,7 +32,7 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(player1)
 all_sprites.add(player2)
 all_sprites.add(bolafut)       
- 
+
 # Comando para evitar travamentos.
 try:
     
@@ -147,7 +147,12 @@ try:
                 
         
         all_sprites.update()
-    
+        
+        #Verifica se houve colisão
+        hits = pygame.sprite.collide_rect(player1, player2)
+        if hits:
+            player1.speedx = 0
+            player2.speedx = 0
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
         screen.blit(background, background_rect)

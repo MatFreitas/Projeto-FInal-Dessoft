@@ -32,6 +32,7 @@ class CPU(pygame.sprite.Sprite):
         #Velocidade
         self.speedx=0
         self.speedy=0
+        
     
     # Metodo que atualiza a posição da navinha
     def update(self):
