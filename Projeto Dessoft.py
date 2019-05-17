@@ -151,8 +151,8 @@ try:
         #Verifica se houve colisão
         hits = pygame.sprite.collide_rect(player1, player2)
         if hits:
-            player1.speedx = 0
-            player2.speedx = 0
+            player1.speedx = -10
+            player2.speedx = 10
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
         screen.blit(background, background_rect)
