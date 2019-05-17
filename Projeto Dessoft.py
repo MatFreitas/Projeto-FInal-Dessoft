@@ -105,6 +105,7 @@ try:
             player2.speedx = 10
         if hits1:
             bolafut.speedx = 20
+            bolafut.speedy = -20
         if hits2:
             bolafut.speedx = -20
             
