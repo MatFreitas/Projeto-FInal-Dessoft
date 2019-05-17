@@ -51,7 +51,7 @@ try:
                 running = False
             
             #Velocidade da bola quando o jogo é iniciado
-            bolafut.speedy= 0
+            
             
             # Verifica se apertou alguma tecla.
             if event.type == pygame.KEYDOWN:
@@ -62,14 +62,18 @@ try:
                 if event.key == pygame.K_d:
                     player1.speedx = 9
                 if event.key == pygame.K_w:
-                    player1.speedy = -20
+                    if not player1.pulando:
+                        player1.speedy = -20
+                        player1.pulando = True
                         
                 if event.key == pygame.K_LEFT:
                     player2.speedx = -9
                 if event.key == pygame.K_RIGHT:
                     player2.speedx = 9
                 if event.key == pygame.K_UP:
-                    player2.speedy = -20
+                    if not player2.pulando:
+                        player2.speedy = -20
+                        player2.pulando = True
                     
                     
             # Verifica se soltou alguma tecla.
@@ -108,6 +112,7 @@ try:
             bolafut.speedy = -20
         if hits2:
             bolafut.speedx = -20
+            bolafut.speedy = -20
             
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
