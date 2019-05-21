@@ -86,7 +86,7 @@ try:
                 if event.key == pygame.K_w:
                     player1.speedy = 0
                 if event.key == pygame.K_LEFT:
-                    player2.speeddx = 0
+                    player2.speedx = 0
                 if event.key == pygame.K_RIGHT:
                     player2.speedx = 0
                 if event.key == pygame.K_UP:
@@ -108,11 +108,11 @@ try:
             player1.speedx = -10
             player2.speedx = 10
         if hits1:
-            bolafut.speedx = 20
-            bolafut.speedy = -20
+            bolafut.speedx = 15
+            bolafut.speedy = -15
         if hits2:
-            bolafut.speedx = -20
-            bolafut.speedy = -20
+            bolafut.speedx = -15
+            bolafut.speedy = -15
             
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)

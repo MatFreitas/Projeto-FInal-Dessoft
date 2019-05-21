@@ -16,7 +16,7 @@ class Bola(pygame.sprite.Sprite):
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
-        self.image= pygame.transform.scale(player_img,(100,100))
+        self.image= pygame.transform.scale(player_img,(40,40))
         
         #Deixando transparente
         self.image.set_colorkey(BLACK)
