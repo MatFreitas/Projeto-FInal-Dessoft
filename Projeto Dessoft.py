@@ -31,7 +31,8 @@ bolafut=Bola()
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player1)
 all_sprites.add(player2)
-all_sprites.add(bolafut)       
+all_sprites.add(bolafut)   
+
 
 # Comando para evitar travamentos.
 try:
@@ -50,7 +51,7 @@ try:
             if event.type == pygame.QUIT:
                 running = False
             
-            #Velocidade da bola quando o jogo é iniciado
+            
             
             
             # Verifica se apertou alguma tecla.
