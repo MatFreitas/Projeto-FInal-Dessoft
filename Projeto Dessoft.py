@@ -22,7 +22,9 @@ clock = pygame.time.Clock()
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
-background_rect = background.get_rect()            
+background_rect = background.get_rect()
+tela_inicio = pygame.image.load(path.join(img_dir, '')).convert()
+tela_inicio            
 player1=Player1()
 player2=CPU()
 bolafut=Bola()
@@ -33,6 +35,27 @@ all_sprites.add(player1)
 all_sprites.add(player2)
 all_sprites.add(bolafut)   
 
+# Comando para evitar travamentos.
+try:
+    
+    # Loop principal.
+    running = True
+    while running:
+        
+        # Ajusta a velocidade do jogo.
+        clock.tick(FPS)
+        
+        # Verifica se apertou alguma tecla.
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    running = False
+        
+        # A cada loop, redesenha o fundo e os sprites
+        screen.fill(BLACK)
+        screen.blit()
+        
+        # Depois de desenhar tudo, inverte o display.
+        pygame.display.flip()
 
 # Comando para evitar travamentos.
 try:
