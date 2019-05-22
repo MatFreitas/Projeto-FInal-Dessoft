@@ -2,7 +2,7 @@
 import pygame
 from os import path
 
-from init import BLACK, img_dir, WIDTH, HEIGHT, FPS
+from init import BLACK, img_dir, snd_dir, WIDTH, HEIGHT, FPS
 from player import Player1
 from cpu import CPU
 from bola import Bola
@@ -19,6 +19,10 @@ pygame.display.set_caption("FutCabeça")
 
 # Variável para o ajuste de velocidade
 clock = pygame.time.Clock()
+
+#Carrega o som do jogo
+pygame.mixer.music.load(path.join(snd_dir, 'Large-crowd-cheering-and-clapping-sound-effect.mp3'))
+pygame.mixer.music.set_volume(0.4)
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
@@ -39,6 +43,7 @@ all_sprites.add(bolafut)
 
     
 # Loop principal.
+pygame.mixer.music.play(loops=-1)
 running = True
 while running:
         
@@ -63,6 +68,7 @@ while running:
 try:
     
     # Loop principal.
+    pygame.mixer.music.play(loops=-1)
     running = True
     while running:
         
