@@ -25,7 +25,7 @@ background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
 background_rect = background.get_rect()
 tela_inicio = pygame.image.load(path.join(img_dir, 'telainicio.png')).convert()
 IMAGE = pygame.transform.scale(tela_inicio,(WIDTH, HEIGHT))
-IMAGE_background = IMAGE.get_rect()         
+IMAGE_background = IMAGE.get_rect()  
 player1=Player1()
 player2=CPU()
 bolafut=Bola()
@@ -55,7 +55,7 @@ while running:
     # A cad a loop, redesenha o fundo e os sprites
     screen.fill(BLACK)
     screen.blit(IMAGE, IMAGE_background)
-        
+     
     # Depois de desenhar tudo, inverte o display.
     pygame.display.flip()
 
