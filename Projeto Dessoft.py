@@ -8,6 +8,8 @@ from cpu import CPU
 from bola import Bola
 from Gol_esquerda import GolEsquerdo
 from Gol_Direita import GolDireito
+from Gol_do_Player2 import Gol_do_player2
+from Gol_do_Player1 import Gol_do_player1
 
 # Inicialização do Pygame.
 pygame.init()
@@ -152,6 +154,13 @@ try:
         if hits2:
             bolafut.speedx = -15
             bolafut.speedy = -15
+        if bolafut.rect.x == 0:
+            Gol_P2 = Gol_do_player2()
+            all_sprites.add(Gol_P2)
+        if  1150 < bolafut.rect.x < WIDTH:
+            Gol_P1 = Gol_do_player1()
+            all_sprites.add(Gol_P1)
+
             
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
