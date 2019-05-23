@@ -2,7 +2,7 @@
 import pygame
 from os import path
 
-from init import BLACK, img_dir, snd_dir, WIDTH, HEIGHT, FPS
+from init import BLACK, RED, WHITE, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
 from player import Player1
 from cpu import CPU
 from bola import Bola
@@ -48,6 +48,11 @@ all_sprites.add(player2)
 all_sprites.add(bolafut)   
 all_sprites.add(GolE)
 all_sprites.add(GolD)
+
+#Define a variável e a fonte do score
+score1 = 0
+score2 = 0
+score_font = pygame.font.Font(path.join(fnt_dir, "PressStart2P.ttf"), 28)
 
 
     
@@ -154,18 +159,34 @@ try:
         if hits2:
             bolafut.speedx = -15
             bolafut.speedy = -15
+            
         if bolafut.rect.x == 0:
             Gol_P2 = Gol_do_player2()
             all_sprites.add(Gol_P2)
+            bolafut.speedx += 100
+            bolafut.speedy -= 300
+            score1 += 1
+            
         if  1150 < bolafut.rect.x < WIDTH:
             Gol_P1 = Gol_do_player1()
             all_sprites.add(Gol_P1)
+            bolafut.speedx -= 100
+            bolafut.speedy -= 300
+            score2 += 1
+         
 
-            
+        if bolafut.rect.y <0:
+            bolafut.kill()
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
         screen.blit(background, background_rect)
         all_sprites.draw(screen)
+        
+        # Desenha o score
+        text_surface = score_font.render("{:02d} x {:02d}".format(score1, score2), True, RED, WHITE)
+        text_rect = text_surface.get_rect()
+        text_rect.midtop = (WIDTH / 2,  10)
+        screen.blit(text_surface, text_rect)
         
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
