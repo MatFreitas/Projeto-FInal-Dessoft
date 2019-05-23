@@ -186,7 +186,7 @@ try:
         all_sprites.draw(screen)
         
         # Desenha o score
-        text_surface = score_font.render("{:02d} x {:02d}".format(score1, score2), True, RED, WHITE)
+        text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
         text_rect = text_surface.get_rect()
         text_rect.midtop = (WIDTH / 2,  10)
         screen.blit(text_surface, text_rect)
