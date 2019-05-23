@@ -159,24 +159,27 @@ try:
         if hits2:
             bolafut.speedx = -15
             bolafut.speedy = -15
-            
+        
+        #Registra gol do player2
         if bolafut.rect.x == 0:
             Gol_P2 = Gol_do_player2()
             all_sprites.add(Gol_P2)
             bolafut.speedx += 100
-            bolafut.speedy -= 300
+            bolafut.speedy -= 600
             score1 += 1
             
+        #Registra gol do player1   
         if  1150 < bolafut.rect.x < WIDTH:
             Gol_P1 = Gol_do_player1()
             all_sprites.add(Gol_P1)
             bolafut.speedx -= 100
-            bolafut.speedy -= 300
+            bolafut.speedy -= 600
             score2 += 1
          
-
-        if bolafut.rect.y <0:
+        #Garante que a bola desapareça quando gol é marcado    
+        if bolafut.rect.y < 0:
             bolafut.kill()
+            
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
         screen.blit(background, background_rect)
