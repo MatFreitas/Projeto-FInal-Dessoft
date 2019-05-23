@@ -6,6 +6,9 @@ from init import BLACK, img_dir, snd_dir, WIDTH, HEIGHT, FPS
 from player import Player1
 from cpu import CPU
 from bola import Bola
+from Gol_esquerda import GolEsquerdo
+from Gol_Direita import GolDireito
+
 # Inicialização do Pygame.
 pygame.init()
 pygame.mixer.init()
@@ -33,12 +36,16 @@ IMAGE_background = IMAGE.get_rect()
 player1=Player1()
 player2=CPU()
 bolafut=Bola()
+GolE= GolEsquerdo()
+GolD= GolDireito()
 
 # Cria um grupo de sprites e adiciona a nave.
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player1)
 all_sprites.add(player2)
 all_sprites.add(bolafut)   
+all_sprites.add(GolE)
+all_sprites.add(GolD)
 
 
     
