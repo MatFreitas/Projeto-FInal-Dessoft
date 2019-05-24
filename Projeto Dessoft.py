@@ -172,7 +172,7 @@ try:
             player1.rect.x = WIDTH-1000
             player1.rect.y = HEIGHT -60
             bolafut.speedx = 0
-            bolafut.speedy = 0 
+            bolafut.speedy = -25
             score1 += 1
             
         #Registra gol do player1   
@@ -186,7 +186,7 @@ try:
             player1.rect.x = WIDTH-1000
             player1.rect.y = HEIGHT -60
             bolafut.speedx = 0
-            bolafut.speedy = -30
+            bolafut.speedy = -25
             score2 += 1
          
             
