@@ -82,6 +82,9 @@ while running:
 # Comando para evitar travamentos.
 try:
     
+    cont_gol1 = 0
+    cont_gol2 = 0
+    
     # Loop principal.
     pygame.mixer.music.play(loops=-1)
     running = True
@@ -174,6 +177,7 @@ try:
             bolafut.speedx = 0
             bolafut.speedy = -25
             score1 += 1
+            cont_gol2 += 1
             
         #Registra gol do player1   
         if  1150 < bolafut.rect.x < WIDTH:
@@ -188,7 +192,20 @@ try:
             bolafut.speedx = 0
             bolafut.speedy = -25
             score2 += 1
+            cont_gol1 += 1
             
+        if cont_gol1 > 0:
+            cont_gol1 += 1
+            if cont_gol1 == FPS * 0.75:
+                Gol_P1.kill()
+                cont_gol1 = 0
+                
+        if cont_gol2 > 0:
+            cont_gol2 += 1
+            if cont_gol2 == FPS * 0.75:
+                Gol_P2.kill()
+                cont_gol2 = 0
+                
          
             
         # A cada loop, redesenha o fundo e os sprites
