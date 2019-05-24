@@ -43,7 +43,7 @@ IMAGErooney = pygame.transform.scale(tela_finalrooney,(WIDTH, HEIGHT))
 IMAGErooney_background = IMAGErooney.get_rect()  
 
 
-tela_finalronaldo = pygame.image.load(path.join(img_dir, 'ronaldowins.png')).convert()
+tela_finalronaldo = pygame.image.load(path.join(img_dir, 'cr7wins.png')).convert()
 IMAGEronaldo = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
 IMAGEronaldo_background = IMAGEronaldo.get_rect()  
 
