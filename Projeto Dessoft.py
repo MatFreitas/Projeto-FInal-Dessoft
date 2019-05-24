@@ -1,6 +1,5 @@
 #Projeto Dessoft
 import pygame
-import time
 from os import path
 
 from init import BLACK, RED, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
@@ -55,6 +54,9 @@ score1 = 0
 score2 = 0
 score_font = pygame.font.Font(path.join(fnt_dir, "PressStart2P.ttf"), 28)
 
+#Define contagem do tempo
+countdown = FPS * 30
+time = 0
 
     
 # Loop principal.
@@ -206,7 +208,9 @@ try:
                 Gol_P2.kill()
                 cont_gol2 = 0
                 
-         
+        countdown -= 1
+        
+        
             
         # A cada loop, redesenha o fundo e os sprites
         screen.fill(BLACK)
@@ -215,9 +219,13 @@ try:
         
         # Desenha o score
         text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
+        countdown_surface = score_font.render("{:02d}".format(countdown), True, RED)
+        countdown_rect = countdown_surface.get_rect()
+        countdown_rect.midtop = (WIDTH / 2, 40)
         text_rect = text_surface.get_rect()
         text_rect.midtop = (WIDTH / 2,  10)
         screen.blit(text_surface, text_rect)
+        screen.blit(countdown_surface, countdown_rect)
         
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
