@@ -27,9 +27,9 @@ class Gol_do_player2(pygame.sprite.Sprite):
         self.rect.centerx= WIDTH / 2
         self.rect.bottom= HEIGHT - 300
         
-        i=0
+        self.duracao = 0
         
-    # Metodo que atualiza a posição da navinha
+     # Metodo que atualiza a posição da navinha
     def update(self):
         
-        i+=1
+        self.duracao += 1
