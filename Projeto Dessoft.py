@@ -32,15 +32,30 @@ pygame.mixer.music.set_volume(0.4)
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
+
 background_rect = background.get_rect()
+
 tela_inicio = pygame.image.load(path.join(img_dir, 'telainicio.png')).convert()
 IMAGE = pygame.transform.scale(tela_inicio,(WIDTH, HEIGHT))
 IMAGE_background = IMAGE.get_rect()  
+
+tela_finalrooney = pygame.image.load(path.join(img_dir, 'rooneywins.png')).convert()
+IMAGErooney = pygame.transform.scale(tela_finalrooney,(WIDTH, HEIGHT))
+IMAGErooney_background = IMAGErooney.get_rect()  
+
+
+tela_finalronaldo = pygame.image.load(path.join(img_dir, 'ronaldowins.png')).convert()
+IMAGEronaldo = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
+IMAGEronaldo_background = IMAGEronaldo.get_rect()  
+
+
+
 player1=Player1()
 player2=CPU()
 bolafut=Bola()
 GolE= GolEsquerdo()
 GolD= GolDireito()
+
 
 # Cria um grupo de sprites e adiciona a nave.
 all_sprites = pygame.sprite.Group()
@@ -221,6 +236,27 @@ try:
         
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
+        
+        
+    running1 = True    
+    while running1 = True:
+        if      :
+            
+            screen.fill(BLACK)
+            screen.blit(IMAGErooney, IMAGErooney_background)
+         
+        # Depois de desenhar tudo, inverte o display.
+            pygame.display.flip()
+            
+        if       :
+            
+            screen.fill(BLACK)
+            screen.blit(IMAGEronaldo, IMAGEronaldo_background)
+     
+        # Depois de desenhar tudo, inverte o display.
+            pygame.display.flip()
+        
+        
         
 finally:
     pygame.quit()
