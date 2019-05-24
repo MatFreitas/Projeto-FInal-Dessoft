@@ -26,4 +26,9 @@ class Gol_do_player2(pygame.sprite.Sprite):
         #Centraliza embaixo da tela
         self.rect.centerx= WIDTH / 2
         self.rect.bottom= HEIGHT - 300
+<<<<<<< HEAD
         
+=======
+    
+        
+>>>>>>> df6aa132e155ee024682c8d9e9607e8a7e373cc3
