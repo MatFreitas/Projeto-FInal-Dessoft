@@ -189,7 +189,7 @@ try:
             bolafut.speedy = -25
             score2 += 1
             
-        if i == 180:
+        if Gol_P2 == 180:
             Gol_P2.kill()
          
             

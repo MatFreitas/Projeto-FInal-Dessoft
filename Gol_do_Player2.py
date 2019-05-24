@@ -28,4 +28,3 @@ class Gol_do_player2(pygame.sprite.Sprite):
         self.rect.bottom= HEIGHT - 300
     
         
-  
