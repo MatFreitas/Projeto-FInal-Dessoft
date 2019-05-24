@@ -48,7 +48,7 @@ IMAGEronaldo = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
 IMAGEronaldo_background = IMAGEronaldo.get_rect()  
 
 tela_finalempate = pygame.image.load(path.join(img_dir, 'draw.png')).convert()
-IMAGEempate = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
+IMAGEempate = pygame.transform.scale(tela_finalempate,(WIDTH, HEIGHT))
 IMAGEempate_background = IMAGEempate.get_rect()  
 
 
