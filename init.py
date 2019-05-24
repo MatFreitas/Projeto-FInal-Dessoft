@@ -15,7 +15,8 @@ BLACK = (0, 0, 0)
 GREEN = (0, 255, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
-FPS=60
+FPS=80
+
 
 # Estabelece a pasta que contem as figuras.
 img_dir = path.join(path.dirname(__file__), 'img')
