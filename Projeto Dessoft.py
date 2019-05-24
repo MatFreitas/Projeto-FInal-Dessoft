@@ -31,7 +31,6 @@ pygame.mixer.music.set_volume(0.4)
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
-
 background_rect = background.get_rect()
 
 tela_inicio = pygame.image.load(path.join(img_dir, 'telainicio.png')).convert()
