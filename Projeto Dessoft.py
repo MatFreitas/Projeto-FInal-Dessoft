@@ -250,7 +250,7 @@ try:
         
     running1 = True    
     while running1:
-        if 1==1:
+        if score2>score1:
             
             screen.fill(BLACK)
             screen.blit(IMAGErooney, IMAGErooney_background)
@@ -258,7 +258,7 @@ try:
         # Depois de desenhar tudo, inverte o display.
             pygame.display.flip()
             
-        else:
+        if score1>score2:
             
             screen.fill(BLACK)
             screen.blit(IMAGEronaldo, IMAGEronaldo_background)
