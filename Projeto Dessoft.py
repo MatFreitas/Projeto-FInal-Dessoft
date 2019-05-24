@@ -70,7 +70,7 @@ score2 = 0
 score_font = pygame.font.Font(path.join(fnt_dir, "PressStart2P.ttf"), 28)
 
 #Define contagem do tempo
-countdown = FPS * 30
+countdown = FPS * 60
 time = 0
 
     
@@ -225,6 +225,8 @@ try:
                 
         countdown -= 1
         
+        if countdown == 0:
+            running = False
         
             
         # A cada loop, redesenha o fundo e os sprites
@@ -234,7 +236,7 @@ try:
         
         # Desenha o score
         text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
-        countdown_surface = score_font.render("{:02d}".format(countdown), True, RED)
+        countdown_surface = score_font.render("{0}".format(int(countdown/60)), True, RED)
         countdown_rect = countdown_surface.get_rect()
         countdown_rect.midtop = (WIDTH / 2, 40)
         text_rect = text_surface.get_rect()
@@ -247,8 +249,8 @@ try:
         
         
     running1 = True    
-    while running1 = True:
-        if      :
+    while running1:
+        if 1==1:
             
             screen.fill(BLACK)
             screen.blit(IMAGErooney, IMAGErooney_background)
@@ -256,7 +258,7 @@ try:
         # Depois de desenhar tudo, inverte o display.
             pygame.display.flip()
             
-        if       :
+        else:
             
             screen.fill(BLACK)
             screen.blit(IMAGEronaldo, IMAGEronaldo_background)
