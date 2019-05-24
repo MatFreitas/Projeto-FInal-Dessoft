@@ -9,7 +9,7 @@ from cpu import CPU
 from bola import Bola
 from Gol_esquerda import GolEsquerdo
 from Gol_Direita import GolDireito
-from Gol_do_Player2 import Gol_do_player2, i
+from Gol_do_Player2 import Gol_do_player2
 from Gol_do_Player1 import Gol_do_player1
 
 # Inicialização do Pygame.
