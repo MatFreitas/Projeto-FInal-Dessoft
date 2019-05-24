@@ -47,6 +47,10 @@ tela_finalronaldo = pygame.image.load(path.join(img_dir, 'cr7wins.png')).convert
 IMAGEronaldo = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
 IMAGEronaldo_background = IMAGEronaldo.get_rect()  
 
+tela_finalempate = pygame.image.load(path.join(img_dir, 'draw.png')).convert()
+IMAGEempate = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
+IMAGEempate_background = IMAGEempate.get_rect()  
+
 
 
 player1=Player1()
@@ -265,6 +269,14 @@ try:
      
         # Depois de desenhar tudo, inverte o display.
             pygame.display.flip()
+            
+        if score1 == score2:
+            screen.fill(BLACK)
+            screen.blit(IMAGEempate, IMAGEempate_background)
+     
+        # Depois de desenhar tudo, inverte o display.
+            pygame.display.flip()
+            
         
         
         
