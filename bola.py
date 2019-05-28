@@ -47,3 +47,8 @@ class Bola(pygame.sprite.Sprite):
             self.rect.left = 0
         if self.rect.bottom > HEIGHT - 66:
             self.rect.bottom = HEIGHT - 66
+            self.speedy = -(self.speedy)
+            self.speedy *=0.5
+            
+            
+            
