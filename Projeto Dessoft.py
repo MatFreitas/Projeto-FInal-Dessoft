@@ -31,7 +31,6 @@ pygame.mixer.music.set_volume(0.4)
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
-
 background_rect = background.get_rect()
 
 tela_inicio = pygame.image.load(path.join(img_dir, 'telainicio.png')).convert()
@@ -48,7 +47,7 @@ IMAGEronaldo = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
 IMAGEronaldo_background = IMAGEronaldo.get_rect()  
 
 tela_finalempate = pygame.image.load(path.join(img_dir, 'draw.png')).convert()
-IMAGEempate = pygame.transform.scale(tela_finalronaldo,(WIDTH, HEIGHT))
+IMAGEempate = pygame.transform.scale(tela_finalempate,(WIDTH, HEIGHT))
 IMAGEempate_background = IMAGEempate.get_rect()  
 
 
