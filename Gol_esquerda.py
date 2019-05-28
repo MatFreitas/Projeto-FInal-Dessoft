@@ -16,7 +16,7 @@ class GolEsquerdo(pygame.sprite.Sprite):
         self.image= player_img
         
         #Diminuindo o tamanho da imagem
-        self.image= pygame.transform.scale(player_img,(100,400))
+        self.image= pygame.transform.scale(player_img,(100,300))
         
         #Deixando transparente
         self.image.set_colorkey(BLACK)
