@@ -107,188 +107,217 @@ while running:
 
 # Comando para evitar travamentos.
 try:
+    running3 = True
+    while running3:
     
-    cont_gol1 = 0
-    cont_gol2 = 0
-    
-    # Loop principal.
-    pygame.mixer.music.play(loops=-1)
-    running = True
-    while running:
+        cont_gol1 = 0
+        cont_gol2 = 0
         
-        # Ajusta a velocidade do jogo.
-        clock.tick(FPS)
-        
-        # Processa os eventos (mouse, teclado, botão, etc).
-        for event in pygame.event.get():
+        # Loop principal.
+        pygame.mixer.music.play(loops=-1)
+        running = True
+        while running:
             
-            # Verifica se foi fechado
-            if event.type == pygame.QUIT:
+            # Ajusta a velocidade do jogo.
+            clock.tick(FPS)
+            
+            # Processa os eventos (mouse, teclado, botão, etc).
+            for event in pygame.event.get():
+                
+                # Verifica se foi fechado
+                if event.type == pygame.QUIT:
+                    running = False
+                
+                
+                
+                
+                # Verifica se apertou alguma tecla.
+                if event.type == pygame.KEYDOWN:
+                    
+                            
+                    if event.key == pygame.K_a:
+                        player1.speedx = -9
+                    if event.key == pygame.K_d:
+                        player1.speedx = 9
+                    if event.key == pygame.K_w:
+                        if not player1.pulando:
+                            player1.speedy = -20
+                            player1.pulando = True
+                            
+                    if event.key == pygame.K_LEFT:
+                        player2.speedx = -9
+                    if event.key == pygame.K_RIGHT:
+                        player2.speedx = 9
+                    if event.key == pygame.K_UP:
+                        if not player2.pulando:
+                            player2.speedy = -20
+                            player2.pulando = True
+                        
+                        
+                # Verifica se soltou alguma tecla.
+                if event.type == pygame.KEYUP:
+                    # Dependendo da tecla, altera a velocidade.
+                    if event.key == pygame.K_a:
+                        player1.speedx = 0
+                    if event.key == pygame.K_d:         
+                        player1.speedx = 0
+                    if event.key == pygame.K_w:
+                        player1.speedy = 0
+                    if event.key == pygame.K_LEFT:
+                        player2.speedx = 0
+                    if event.key == pygame.K_RIGHT:
+                        player2.speedx = 0
+                    if event.key == pygame.K_UP:
+                        player2.speedy = 0
+                        
+                    
+                        
+                    
+            
+            all_sprites.update()
+            
+            #Verifica se houve colisão
+            hits = pygame.sprite.collide_rect(player1, player2)
+            hits1 = pygame.sprite.collide_rect(player1, bolafut)
+            hits2 = pygame.sprite.collide_rect(player2, bolafut)
+            hits3 = pygame.sprite.collide_rect(bolafut, TravessaoE)
+            hits4 = pygame.sprite.collide_rect(bolafut, TravessaoD)
+            
+            #Colisão entre players, player1 e bola, player2 e bola, respectivamente
+            if hits:
+                player1.speedx = -10
+                player2.speedx = 10
+            if hits1:
+                bolafut.speedx = 15
+                bolafut.speedy = -15
+            if hits2:
+                bolafut.speedx = -15
+                bolafut.speedy = -15
+            if hits3:
+                bolafut.speedx = 15
+                bolafut.speedy = -15
+            if hits4:
+                bolafut.speedx = -15
+                bolafut.speedy = -15
+            
+            #Registra gol do player2
+            if bolafut.rect.x == 0 and bolafut.rect.y > HEIGHT-360:
+                Gol_P2 = Gol_do_player2()
+                all_sprites.add(Gol_P2)
+                bolafut.rect.x = WIDTH - 600
+                bolafut.rect.y = HEIGHT -400
+                player2.rect.x = WIDTH-200
+                player2.rect.y = HEIGHT -66
+                player1.rect.x = WIDTH-1000
+                player1.rect.y = HEIGHT -60
+                bolafut.speedx = 0
+                bolafut.speedy = -25
+                score1 += 1
+                cont_gol2 += 1
+                
+            #Registra gol do player1   
+            if  1150 < bolafut.rect.x < WIDTH and bolafut.rect.y > HEIGHT-360:
+                Gol_P1 = Gol_do_player1()
+                all_sprites.add(Gol_P1)
+                bolafut.rect.x = WIDTH - 600
+                bolafut.rect.y = HEIGHT -400
+                player2.rect.x = WIDTH-200
+                player2.rect.y = HEIGHT -66
+                player1.rect.x = WIDTH-1000
+                player1.rect.y = HEIGHT -60
+                bolafut.speedx = 0
+                bolafut.speedy = -25
+                score2 += 1
+                cont_gol1 += 1
+                
+            if cont_gol1 > 0:
+                cont_gol1 += 1
+                if cont_gol1 == FPS * 0.75:
+                    Gol_P1.kill()
+                    cont_gol1 = 0
+                    
+            if cont_gol2 > 0:
+                cont_gol2 += 1
+                if cont_gol2 == FPS * 0.75:
+                    Gol_P2.kill()
+                    cont_gol2 = 0
+                    
+            countdown -= 1
+            
+            if countdown == 0:
                 running = False
             
-            
-            
-            
-            # Verifica se apertou alguma tecla.
-            if event.type == pygame.KEYDOWN:
                 
-                        
-                if event.key == pygame.K_a:
-                    player1.speedx = -9
-                if event.key == pygame.K_d:
-                    player1.speedx = 9
-                if event.key == pygame.K_w:
-                    if not player1.pulando:
-                        player1.speedy = -20
-                        player1.pulando = True
-                        
-                if event.key == pygame.K_LEFT:
-                    player2.speedx = -9
-                if event.key == pygame.K_RIGHT:
-                    player2.speedx = 9
-                if event.key == pygame.K_UP:
-                    if not player2.pulando:
-                        player2.speedy = -20
-                        player2.pulando = True
-                    
-                    
-            # Verifica se soltou alguma tecla.
-            if event.type == pygame.KEYUP:
-                # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_a:
-                    player1.speedx = 0
-                if event.key == pygame.K_d:         
-                    player1.speedx = 0
-                if event.key == pygame.K_w:
-                    player1.speedy = 0
-                if event.key == pygame.K_LEFT:
-                    player2.speedx = 0
-                if event.key == pygame.K_RIGHT:
-                    player2.speedx = 0
-                if event.key == pygame.K_UP:
-                    player2.speedy = 0
-                    
-                
-                    
-                
-        
-        all_sprites.update()
-        
-        #Verifica se houve colisão
-        hits = pygame.sprite.collide_rect(player1, player2)
-        hits1 = pygame.sprite.collide_rect(player1, bolafut)
-        hits2 = pygame.sprite.collide_rect(player2, bolafut)
-        hits3 = pygame.sprite.collide_rect(bolafut, TravessaoE)
-        hits4 = pygame.sprite.collide_rect(bolafut, TravessaoD)
-        
-        #Colisão entre players, player1 e bola, player2 e bola, respectivamente
-        if hits:
-            player1.speedx = -10
-            player2.speedx = 10
-        if hits1:
-            bolafut.speedx = 15
-            bolafut.speedy = -15
-        if hits2:
-            bolafut.speedx = -15
-            bolafut.speedy = -15
-        if hits3:
-            bolafut.speedx = 15
-            bolafut.speedy = -15
-        if hits4:
-            bolafut.speedx = -15
-            bolafut.speedy = -15
-        
-        #Registra gol do player2
-        if bolafut.rect.x == 0 and bolafut.rect.y > HEIGHT-360:
-            Gol_P2 = Gol_do_player2()
-            all_sprites.add(Gol_P2)
-            bolafut.rect.x = WIDTH - 600
-            bolafut.rect.y = HEIGHT -400
-            player2.rect.x = WIDTH-200
-            player2.rect.y = HEIGHT -66
-            player1.rect.x = WIDTH-1000
-            player1.rect.y = HEIGHT -60
-            bolafut.speedx = 0
-            bolafut.speedy = -25
-            score1 += 1
-            cont_gol2 += 1
-            
-        #Registra gol do player1   
-        if  1150 < bolafut.rect.x < WIDTH and bolafut.rect.y > HEIGHT-360:
-            Gol_P1 = Gol_do_player1()
-            all_sprites.add(Gol_P1)
-            bolafut.rect.x = WIDTH - 600
-            bolafut.rect.y = HEIGHT -400
-            player2.rect.x = WIDTH-200
-            player2.rect.y = HEIGHT -66
-            player1.rect.x = WIDTH-1000
-            player1.rect.y = HEIGHT -60
-            bolafut.speedx = 0
-            bolafut.speedy = -25
-            score2 += 1
-            cont_gol1 += 1
-            
-        if cont_gol1 > 0:
-            cont_gol1 += 1
-            if cont_gol1 == FPS * 0.75:
-                Gol_P1.kill()
-                cont_gol1 = 0
-                
-        if cont_gol2 > 0:
-            cont_gol2 += 1
-            if cont_gol2 == FPS * 0.75:
-                Gol_P2.kill()
-                cont_gol2 = 0
-                
-        countdown -= 1
-        
-        if countdown == 0:
-            running = False
-        
-            
-        # A cada loop, redesenha o fundo e os sprites
-        screen.fill(BLACK)
-        screen.blit(background, background_rect)
-        all_sprites.draw(screen)
-        
-        # Desenha o score
-        text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
-        countdown_surface = score_font.render("{0}".format(int(countdown/60)), True, RED)
-        countdown_rect = countdown_surface.get_rect()
-        countdown_rect.midtop = (WIDTH / 2, 40)
-        text_rect = text_surface.get_rect()
-        text_rect.midtop = (WIDTH / 2,  10)
-        screen.blit(text_surface, text_rect)
-        screen.blit(countdown_surface, countdown_rect)
-        
-        # Depois de desenhar tudo, inverte o display.
-        pygame.display.flip()
-        
-        
-    running1 = True    
-    while running1:
-        if score2 > score1:
-            
+            # A cada loop, redesenha o fundo e os sprites
             screen.fill(BLACK)
-            screen.blit(IMAGErooney, IMAGErooney_background)
+            screen.blit(background, background_rect)
+            all_sprites.draw(screen)
+            
+            # Desenha o score
+            text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
+            countdown_surface = score_font.render("{0}".format(int(countdown/60)), True, RED)
+            countdown_rect = countdown_surface.get_rect()
+            countdown_rect.midtop = (WIDTH / 2, 40)
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (WIDTH / 2,  10)
+            screen.blit(text_surface, text_rect)
+            screen.blit(countdown_surface, countdown_rect)
+            
+            # Depois de desenhar tudo, inverte o display.
+            pygame.display.flip()
+            
+            
+        running1 = True    
+        while running1:
+            if score2 > score1:
+                
+                screen.fill(BLACK)
+                screen.blit(IMAGErooney, IMAGErooney_background)
+             
+            # Depois de desenhar tudo, inverte o display.
+                pygame.display.flip()
+                
+            if score1 > score2:
+                
+                screen.fill(BLACK)
+                screen.blit(IMAGEronaldo, IMAGEronaldo_background)
          
-        # Depois de desenhar tudo, inverte o display.
-            pygame.display.flip()
-            
-        if score1 > score2:
-            
-            screen.fill(BLACK)
-            screen.blit(IMAGEronaldo, IMAGEronaldo_background)
-     
-        # Depois de desenhar tudo, inverte o display.
-            pygame.display.flip()
-            
-        if score1 == score2:
-            screen.fill(BLACK)
-            screen.blit(IMAGEempate, IMAGEempate_background)
-     
-        # Depois de desenhar tudo, inverte o display.
-            pygame.display.flip()
+            # Depois de desenhar tudo, inverte o display.
+                pygame.display.flip()
+                
+            if score1 == score2:
+                screen.fill(BLACK)
+                screen.blit(IMAGEempate, IMAGEempate_background)
+         
+            # Depois de desenhar tudo, inverte o display.
+                pygame.display.flip()
+                
+             # Processa os eventos (mouse, teclado, botão, etc).
+            for event in pygame.event.get():
+                
+                # Verifica se foi fechado
+                if event.type == pygame.QUIT:
+                    running1 = False
+                    running3 = False
+                
+                # Verifica se apertou alguma tecla.
+                if event.type == pygame.KEYDOWN:
+                    
+                    if event.key == pygame.K_SPACE:
+                        #Reposiciona sprites e zera placar, countdown
+                        #e velocidade da bola
+                        score1 = 0
+                        score2 = 0
+                        countdown = FPS * 60
+                        player1.rect.x = WIDTH-1000
+                        player1.rect.y = HEIGHT-60
+                        player2.rect.x = WIDTH-200
+                        player2.rect.y = HEIGHT-66
+                        bolafut.rect.x = WIDTH-600
+                        bolafut.rect.y = HEIGHT-400
+                        bolafut.speedx = 0
+                        bolafut.speedy = 0
+                        running1 = False
             
         
         
