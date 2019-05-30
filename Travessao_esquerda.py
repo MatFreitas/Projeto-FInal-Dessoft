@@ -1,6 +1,6 @@
 import pygame
 from os import path
-from init import BLACK, img_dir, WIDTH, HEIGHT
+from init import WHITE, img_dir, WIDTH, HEIGHT
 
 
 class TravessaoEsquerda(pygame.sprite.Sprite):
@@ -19,7 +19,7 @@ class TravessaoEsquerda(pygame.sprite.Sprite):
         self.image= pygame.transform.scale(player_img,(90,30))
         
         #Deixando transparente
-        self.image.set_colorkey(BLACK)
+        self.image.set_colorkey(WHITE)
         
         #Detalhes sobre o posicionaento
         self.rect= self.image.get_rect()
