@@ -10,6 +10,7 @@ from Gol_esquerda import GolEsquerdo
 from Gol_Direita import GolDireito
 from Gol_do_Player2 import Gol_do_player2
 from Gol_do_Player1 import Gol_do_player1
+from Travessao_esquerda import TravessaoEsquerda
 
 # Inicialização do Pygame.
 pygame.init()
@@ -57,6 +58,7 @@ player2=CPU()
 bolafut=Bola()
 GolE= GolEsquerdo()
 GolD= GolDireito()
+TravessaoE= TravessaoEsquerda()
 
 
 # Cria um grupo de sprites e adiciona a nave.
@@ -66,6 +68,7 @@ all_sprites.add(player2)
 all_sprites.add(bolafut)   
 all_sprites.add(GolE)
 all_sprites.add(GolD)
+all_sprites.add(TravessaoE)
 
 #Define a variável e a fonte do score
 score1 = 0
@@ -172,6 +175,7 @@ try:
         hits = pygame.sprite.collide_rect(player1, player2)
         hits1 = pygame.sprite.collide_rect(player1, bolafut)
         hits2 = pygame.sprite.collide_rect(player2, bolafut)
+        hits3 = pygame.sprite.collide_rect(bolafut, TravessaoE)
         
         #Colisão entre players, player1 e bola, player2 e bola, respectivamente
         if hits:
@@ -183,9 +187,12 @@ try:
         if hits2:
             bolafut.speedx = -15
             bolafut.speedy = -15
+        if hits3:
+            bolafut.speedx = 15
+            bolafut.speedy = -15
         
         #Registra gol do player2
-        if bolafut.rect.x == 0:
+        if bolafut.rect.x == 0 and bolafut.rect.y > HEIGHT-360:
             Gol_P2 = Gol_do_player2()
             all_sprites.add(Gol_P2)
             bolafut.rect.x = WIDTH - 600
@@ -200,7 +207,7 @@ try:
             cont_gol2 += 1
             
         #Registra gol do player1   
-        if  1150 < bolafut.rect.x < WIDTH:
+        if  1150 < bolafut.rect.x < WIDTH and bolafut.rect.y > HEIGHT-360:
             Gol_P1 = Gol_do_player1()
             all_sprites.add(Gol_P1)
             bolafut.rect.x = WIDTH - 600
