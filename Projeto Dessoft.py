@@ -30,6 +30,7 @@ clock = pygame.time.Clock()
 #Carrega o som do jogo
 pygame.mixer.music.load(path.join(snd_dir, 'Large-crowd-cheering-and-clapping-sound-effect.mp3'))
 pygame.mixer.music.set_volume(0.4)
+cheer_sound = pygame.mixer.Sound(path.join(snd_dir, 'HOORAY.wav'))
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
