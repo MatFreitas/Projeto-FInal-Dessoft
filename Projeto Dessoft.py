@@ -107,6 +107,9 @@ while running:
 
 # Comando para evitar travamentos.
 try:
+    countdown_especial_p1 = FPS*20
+    ESPECIAL_P1 = False
+    cont_especial1 = 0
     running3 = True
     while running3:
     
@@ -169,9 +172,6 @@ try:
                         player2.speedx = 0
                     if event.key == pygame.K_UP:
                         player2.speedy = 0
-                        
-                    
-                        
                     
             
             all_sprites.update()
@@ -188,8 +188,14 @@ try:
                 player1.speedx = -10
                 player2.speedx = 10
             if hits1:
-                bolafut.speedx = 15
-                bolafut.speedy = -15
+                if ESPECIAL_P1 == True:
+                    bolafut.speedx = 50
+                    bolafut.speedy = -20
+                else:
+                    bolafut.speedx = 15
+                    bolafut.speedy = -15
+        
+    
             if hits2:
                 bolafut.speedx = -15
                 bolafut.speedy = -15
@@ -199,7 +205,7 @@ try:
             if hits4:
                 bolafut.speedx = -15
                 bolafut.speedy = -15
-            
+                
             #Registra gol do player2
             if bolafut.rect.x == 0 and bolafut.rect.y > HEIGHT-360:
                 Gol_P2 = Gol_do_player2()
@@ -241,12 +247,56 @@ try:
                 if cont_gol2 == FPS * 0.75:
                     Gol_P2.kill()
                     cont_gol2 = 0
+                
                     
             countdown -= 1
+            countdown_especial_p1 -=1
             
+            if ESPECIAL_P1 == True and cont_especial1 == 1:
+                Especial_P1_Duration = FPS*7.5
+                cont_especial1 += 1
+            
+            if cont_especial1 != 0:
+                Especial_P1_Duration -= 1
+                
+                if Especial_P1_Duration == 0:
+                    ESPECIAL_P1 = False
+                    player1.image = pygame.image.load(path.join(img_dir,"ROONEY_v2.png")).convert()
+                    #Diminuindo o tamanho da imagem
+                    player1.image= pygame.transform.scale(player1.image,(150,160))
+                    
+                    #Deixando transparente
+                    player1.image.set_colorkey(BLACK)
+                    
+                    #Detalhes sobre o posicionaento
+                    player1.rect= player1.image.get_rect()
+                    
+                    #Centraliza embaixo da tela
+                    player1.rect.centerx= player1.rect.x
+                    player1.rect.bottom= player1.rect.y
+                    
             if countdown == 0:
                 running = False
-            
+                
+            if countdown_especial_p1 == 0:
+                ESPECIAL_P1 = True
+                cont_especial1 += 1
+                
+                player1.image = pygame.image.load(path.join(img_dir,"ESPECIAL_P1.png")).convert()
+                #Diminuindo o tamanho da imagem
+                player1.image= pygame.transform.scale(player1.image,(120,160))
+                
+                #Deixando transparente
+                player1.image.set_colorkey(BLACK)
+                
+                #Detalhes sobre o posicionaento
+                player1.rect= player1.image.get_rect()
+                
+                #Centraliza embaixo da tela
+                player1.rect.centerx= player1.rect.x
+                player1.rect.bottom= player1.rect.y
+                
+                
                 
             # A cada loop, redesenha o fundo e os sprites
             screen.fill(BLACK)
