@@ -108,8 +108,11 @@ while running:
 # Comando para evitar travamentos.
 try:
     countdown_especial_p1 = FPS*20
+    countdown_especial_p2 = FPS*5
     ESPECIAL_P1 = False
+    ESPECIAL_P2 = False
     cont_especial1 = 0
+    cont_especial2 = 0
     running3 = True
     while running3:
     
@@ -250,20 +253,44 @@ try:
                 
                     
             countdown -= 1
-            countdown_especial_p1 -=1
+            countdown_especial_p1 -= 1
+            countdown_especial_p2 -= 1
+            
+            if ESPECIAL_P2 == True and cont_especial2 == 1:
+                Especial_P2_Duration = FPS*5
+                cont_especial2 += 1
             
             if ESPECIAL_P1 == True and cont_especial1 == 1:
-                Especial_P1_Duration = FPS*7.5
+                Especial_P1_Duration = FPS*8
                 cont_especial1 += 1
             
-            if cont_especial1 != 0:
+            if ESPECIAL_P2 == True and cont_especial2 != 0:
+                Especial_P2_Duration -= 1
+                
+                if Especial_P2_Duration == 0:
+                    ESPECIAL_P2 = False
+                    player2.image = pygame.image.load(path.join(img_dir,"CR7_v2.png")).convert()
+                    #Diminuindo o tamanho da imagem
+                    player2.image= pygame.transform.scale(player2.image,(120,160))
+                    
+                    #Deixando transparente
+                    player2.image.set_colorkey(BLACK)
+                    
+                    #Detalhes sobre o posicionaento
+                    player2.rect= player2.image.get_rect()
+                    
+                    #Centraliza embaixo da tela
+                    player2.rect.centerx= player2.rect.x
+                    player2.rect.bottom= player2.rect.y
+            
+            if ESPECIAL_P1 == True and cont_especial1 != 0:
                 Especial_P1_Duration -= 1
                 
                 if Especial_P1_Duration == 0:
                     ESPECIAL_P1 = False
                     player1.image = pygame.image.load(path.join(img_dir,"ROONEY_v2.png")).convert()
                     #Diminuindo o tamanho da imagem
-                    player1.image= pygame.transform.scale(player1.image,(150,160))
+                    player1.image= pygame.transform.scale(player1.image,(120,160))
                     
                     #Deixando transparente
                     player1.image.set_colorkey(BLACK)
@@ -275,8 +302,28 @@ try:
                     player1.rect.centerx= player1.rect.x
                     player1.rect.bottom= player1.rect.y
                     
+            
+                    
             if countdown == 0:
                 running = False
+            
+            if countdown_especial_p2 == 0:
+                ESPECIAL_P2 = True
+                cont_especial2 += 1
+                
+                player2.image = pygame.image.load(path.join(img_dir,"ESPECIAL_P2.png")).convert()
+                #Diminuindo o tamanho da imagem
+                player2.image= pygame.transform.scale(player2.image,(300,320))
+                
+                #Deixando transparente
+                player2.image.set_colorkey(BLACK)
+                
+                #Detalhes sobre o posicionaento
+                player2.rect= player2.image.get_rect()
+                
+                #Centraliza embaixo da tela
+                player2.rect.centerx= player2.rect.x
+                player2.rect.bottom= player2.rect.y
                 
             if countdown_especial_p1 == 0:
                 ESPECIAL_P1 = True
@@ -284,7 +331,7 @@ try:
                 
                 player1.image = pygame.image.load(path.join(img_dir,"ESPECIAL_P1.png")).convert()
                 #Diminuindo o tamanho da imagem
-                player1.image= pygame.transform.scale(player1.image,(120,160))
+                player1.image= pygame.transform.scale(player1.image,(150,160))
                 
                 #Deixando transparente
                 player1.image.set_colorkey(BLACK)
@@ -359,6 +406,11 @@ try:
                         score1 = 0
                         score2 = 0
                         countdown = FPS * 60
+                        countdown_especial_p1 = FPS*20
+                        countdown_especial_p2 = FPS*5
+                        cont_especial1 = 0
+                        cont_especial2 = 0
+                        
                         player1.rect.x = WIDTH-1000
                         player1.rect.y = HEIGHT-60
                         player2.rect.x = WIDTH-200
