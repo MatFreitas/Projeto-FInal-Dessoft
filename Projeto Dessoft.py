@@ -2,7 +2,7 @@
 import pygame
 from os import path
 
-from init import BLACK, RED, WHITE, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
+from init import BLACK, RED, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
 from player import Player1
 from cpu import CPU
 from bola import Bola
@@ -232,8 +232,11 @@ try:
             
             #Colisão entre players, player1 e bola, player2 e bola, respectivamente
             if hits:
-                player1.speedx = -10
-                player2.speedx = 10
+                if ESPECIAL_P2 == True:
+                    player1.speedx = -25
+                else:
+                    player1.speedx = -10
+                    player2.speedx = 10
             if hits1:
                 if ESPECIAL_P1 == True:
                     bolafut.speedx = 50
