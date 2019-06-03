@@ -230,7 +230,7 @@ try:
             if hits1:
                 if ESPECIAL_P1 == True:
                     bolafut.speedx = 50
-                    bolafut.speedy = -20
+                    bolafut.speedy = -17.5
                 else:
                     bolafut.speedx = 15
                     bolafut.speedy = -15
@@ -345,11 +345,6 @@ try:
                     
             if countdown == 0:
                 running = False
-            
-                
-            
-                
-                
                 
             # A cada loop, redesenha o fundo e os sprites
             screen.fill(BLACK)
