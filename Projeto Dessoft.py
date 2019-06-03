@@ -149,6 +149,25 @@ try:
                         if not player1.pulando:
                             player1.speedy = -20
                             player1.pulando = True
+                    if event.key == pygame.K_f:
+                        if countdown_especial_p1 <= 0:
+                            ESPECIAL_P1 = True
+                            cont_especial1 += 1
+                            
+                            player1.image = pygame.image.load(path.join(img_dir,"ESPECIAL_P1.png")).convert()
+                            #Diminuindo o tamanho da imagem
+                            player1.image= pygame.transform.scale(player1.image,(150,160))
+                            
+                            #Deixando transparente
+                            player1.image.set_colorkey(BLACK)
+                            
+                            #Detalhes sobre o posicionaento
+                            player1.rect= player1.image.get_rect()
+                            
+                            #Centraliza embaixo da tela
+                            player1.rect.centerx= WIDTH-1000
+                            player1.rect.bottom= HEIGHT-60
+                    
                             
                     if event.key == pygame.K_LEFT:
                         player2.speedx = -9
@@ -158,6 +177,24 @@ try:
                         if not player2.pulando:
                             player2.speedy = -20
                             player2.pulando = True
+                    if event.key == pygame.K_k:
+                        if countdown_especial_p2 <= 0:
+                            ESPECIAL_P2 = True
+                            cont_especial2 += 1
+                            
+                            player2.image = pygame.image.load(path.join(img_dir,"ESPECIAL_P2.png")).convert()
+                            #Diminuindo o tamanho da imagem
+                            player2.image= pygame.transform.scale(player2.image,(300,320))
+                            
+                            #Deixando transparente
+                            player2.image.set_colorkey(BLACK)
+                            
+                            #Detalhes sobre o posicionaento
+                            player2.rect= player2.image.get_rect()
+                            
+                            #Centraliza embaixo da tela
+                            player2.rect.centerx= WIDTH-200
+                            player2.rect.bottom= HEIGHT-66
                         
                         
                 # Verifica se soltou alguma tecla.
@@ -197,11 +234,13 @@ try:
                 else:
                     bolafut.speedx = 15
                     bolafut.speedy = -15
-        
-    
             if hits2:
-                bolafut.speedx = -15
-                bolafut.speedy = -15
+                if ESPECIAL_P2 == True:
+                    bolafut.speedy = 3
+                    bolafut.speedx = -20
+                else:
+                    bolafut.speedx = -15
+                    bolafut.speedy = -15
             if hits3:
                 bolafut.speedx = 15
                 bolafut.speedy = -15
@@ -283,7 +322,7 @@ try:
                     player2.rect.centerx= WIDTH-200
                     player2.rect.bottom= HEIGHT-66
             
-            if ESPECIAL_P1 == True and cont_especial1 != 0:
+            if ESPECIAL_P1 == True and cont_especial1 != 0 :
                 Especial_P1_Duration -= 1
                 
                 if Especial_P1_Duration == 0:
@@ -307,41 +346,8 @@ try:
             if countdown == 0:
                 running = False
             
-            if countdown_especial_p2 == 0:
-                ESPECIAL_P2 = True
-                cont_especial2 += 1
                 
-                player2.image = pygame.image.load(path.join(img_dir,"ESPECIAL_P2.png")).convert()
-                #Diminuindo o tamanho da imagem
-                player2.image= pygame.transform.scale(player2.image,(300,320))
-                
-                #Deixando transparente
-                player2.image.set_colorkey(BLACK)
-                
-                #Detalhes sobre o posicionaento
-                player2.rect= player2.image.get_rect()
-                
-                #Centraliza embaixo da tela
-                player2.rect.centerx= WIDTH-200
-                player2.rect.bottom= HEIGHT-66
-                
-            if countdown_especial_p1 == 0:
-                ESPECIAL_P1 = True
-                cont_especial1 += 1
-                
-                player1.image = pygame.image.load(path.join(img_dir,"ESPECIAL_P1.png")).convert()
-                #Diminuindo o tamanho da imagem
-                player1.image= pygame.transform.scale(player1.image,(150,160))
-                
-                #Deixando transparente
-                player1.image.set_colorkey(BLACK)
-                
-                #Detalhes sobre o posicionaento
-                player1.rect= player1.image.get_rect()
-                
-                #Centraliza embaixo da tela
-                player1.rect.centerx= WIDTH-1000
-                player1.rect.bottom= HEIGHT-60
+            
                 
                 
                 
