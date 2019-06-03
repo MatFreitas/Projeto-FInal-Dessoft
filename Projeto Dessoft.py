@@ -257,7 +257,7 @@ try:
             countdown_especial_p2 -= 1
             
             if ESPECIAL_P2 == True and cont_especial2 == 1:
-                Especial_P2_Duration = FPS*5
+                Especial_P2_Duration = FPS*8
                 cont_especial2 += 1
             
             if ESPECIAL_P1 == True and cont_especial1 == 1:
@@ -280,8 +280,8 @@ try:
                     player2.rect= player2.image.get_rect()
                     
                     #Centraliza embaixo da tela
-                    player2.rect.centerx= player2.rect.x
-                    player2.rect.bottom= player2.rect.y
+                    player2.rect.centerx= WIDTH-200
+                    player2.rect.bottom= HEIGHT-66
             
             if ESPECIAL_P1 == True and cont_especial1 != 0:
                 Especial_P1_Duration -= 1
@@ -299,8 +299,8 @@ try:
                     player1.rect= player1.image.get_rect()
                     
                     #Centraliza embaixo da tela
-                    player1.rect.centerx= player1.rect.x
-                    player1.rect.bottom= player1.rect.y
+                    player1.rect.centerx= WIDTH-1000
+                    player1.rect.bottom= HEIGHT-60
                     
             
                     
@@ -322,8 +322,8 @@ try:
                 player2.rect= player2.image.get_rect()
                 
                 #Centraliza embaixo da tela
-                player2.rect.centerx= player2.rect.x
-                player2.rect.bottom= player2.rect.y
+                player2.rect.centerx= WIDTH-200
+                player2.rect.bottom= HEIGHT-66
                 
             if countdown_especial_p1 == 0:
                 ESPECIAL_P1 = True
@@ -340,8 +340,8 @@ try:
                 player1.rect= player1.image.get_rect()
                 
                 #Centraliza embaixo da tela
-                player1.rect.centerx= player1.rect.x
-                player1.rect.bottom= player1.rect.y
+                player1.rect.centerx= WIDTH-1000
+                player1.rect.bottom= HEIGHT-60
                 
                 
                 
@@ -410,7 +410,6 @@ try:
                         countdown_especial_p2 = FPS*5
                         cont_especial1 = 0
                         cont_especial2 = 0
-                        
                         player1.rect.x = WIDTH-1000
                         player1.rect.y = HEIGHT-60
                         player2.rect.x = WIDTH-200
