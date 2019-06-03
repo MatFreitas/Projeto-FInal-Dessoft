@@ -420,6 +420,8 @@ try:
                         countdown_especial_p2 = FPS*5
                         cont_especial1 = 0
                         cont_especial2 = 0
+                        OneTry_especial1 = 0
+                        OneTry_especial2 = 0
                         player1.rect.x = WIDTH-1000
                         player1.rect.y = HEIGHT-60
                         player2.rect.x = WIDTH-200
