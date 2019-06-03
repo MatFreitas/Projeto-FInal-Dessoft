@@ -113,6 +113,8 @@ try:
     ESPECIAL_P2 = False
     cont_especial1 = 0
     cont_especial2 = 0
+    OneTry_especial1 = 0
+    OneTry_especial2 = 0
     running3 = True
     while running3:
     
@@ -150,7 +152,7 @@ try:
                             player1.speedy = -20
                             player1.pulando = True
                     if event.key == pygame.K_f:
-                        if countdown_especial_p1 <= 0:
+                        if countdown_especial_p1 <= 0 and OneTry_especial1 == 0:
                             ESPECIAL_P1 = True
                             cont_especial1 += 1
                             
@@ -167,7 +169,8 @@ try:
                             #Centraliza embaixo da tela
                             player1.rect.centerx= WIDTH-1000
                             player1.rect.bottom= HEIGHT-60
-                    
+                            
+                            OneTry_especial1 += 1
                             
                     if event.key == pygame.K_LEFT:
                         player2.speedx = -9
@@ -178,7 +181,7 @@ try:
                             player2.speedy = -20
                             player2.pulando = True
                     if event.key == pygame.K_k:
-                        if countdown_especial_p2 <= 0:
+                        if countdown_especial_p2 <= 0 and  OneTry_especial2 == 0:
                             ESPECIAL_P2 = True
                             cont_especial2 += 1
                             
@@ -195,7 +198,8 @@ try:
                             #Centraliza embaixo da tela
                             player2.rect.centerx= WIDTH-200
                             player2.rect.bottom= HEIGHT-66
-                        
+                            
+                            OneTry_especial2 += 1
                         
                 # Verifica se soltou alguma tecla.
                 if event.type == pygame.KEYUP:
@@ -241,6 +245,11 @@ try:
                 else:
                     bolafut.speedx = -15
                     bolafut.speedy = -15
+                if ESPECIAL_P1 == True:
+                    player2.rect.y = -300
+                    player2.speedy = -100
+                    bolafut.speedx = -5
+                    bolafut.speedy = -20
             if hits3:
                 bolafut.speedx = 15
                 bolafut.speedy = -15
