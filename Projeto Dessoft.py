@@ -2,7 +2,7 @@
 import pygame
 from os import path
 
-from init import BLACK, RED, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
+from init import BLACK, RED, WHITE, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
 from player import Player1
 from cpu import CPU
 from bola import Bola
@@ -77,6 +77,9 @@ all_sprites.add(TravessaoD)
 score1 = 0
 score2 = 0
 score_font = pygame.font.Font(path.join(fnt_dir, "PressStart2P.ttf"), 28)
+
+#Define a fonte do especial
+especial_font = pygame.font.Font(path.join(fnt_dir,"scoreboard.ttf"), 60)
 
 #Define contagem do tempo
 countdown = FPS * 60
@@ -246,7 +249,7 @@ try:
                     bolafut.speedx = -15
                     bolafut.speedy = -15
                 if ESPECIAL_P1 == True:
-                    player2.rect.y = -300
+                    
                     player2.speedy = -100
                     bolafut.speedx = -5
                     bolafut.speedy = -20
@@ -361,6 +364,28 @@ try:
             all_sprites.draw(screen)
             
             # Desenha o score
+            if countdown_especial_p1 <= 0 and OneTry_especial1 == 0:
+                message_surface = score_font.render("Press 'f' to use", True, RED)
+                message_rect = message_surface.get_rect()
+                message_rect.midtop = (WIDTH - 900, 270)
+                screen.blit(message_surface, message_rect)
+                
+                message1_surface = especial_font.render("ROONEY SPECIAL!", True, RED)
+                message1_rect = message1_surface.get_rect()
+                message1_rect.midtop = (WIDTH - 900, 300)
+                screen.blit(message1_surface, message1_rect)
+            
+            if countdown_especial_p2 <= 0 and OneTry_especial2 == 0:
+                message_p2_surface = score_font.render("Press 'k' to use", True, BLACK)
+                message_rect_p2 = message_p2_surface.get_rect()
+                message_rect_p2.midtop = (WIDTH - 300, 270)
+                screen.blit(message_p2_surface, message_rect_p2)
+                
+                message1_p2_surface = especial_font.render("CR7 SPECIAL!", True, BLACK)
+                message1_rect_p2 = message1_p2_surface.get_rect()
+                message1_rect_p2.midtop = (WIDTH - 300, 300)
+                screen.blit(message1_p2_surface, message1_rect_p2)
+                
             text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
             countdown_surface = score_font.render("{0}".format(int(countdown/60)), True, RED)
             countdown_rect = countdown_surface.get_rect()
@@ -422,6 +447,8 @@ try:
                         cont_especial2 = 0
                         OneTry_especial1 = 0
                         OneTry_especial2 = 0
+                        ESPECIAL_P1 = False
+                        ESPECIAL_P2 = False
                         player1.rect.x = WIDTH-1000
                         player1.rect.y = HEIGHT-60
                         player2.rect.x = WIDTH-200
