@@ -29,6 +29,7 @@ clock = pygame.time.Clock()
 
 #Carrega o som do jogo
 pygame.mixer.music.load(path.join(snd_dir, 'Large-crowd-cheering-and-clapping-sound-effect.mp3'))
+Goal_sound = pygame.mixer.Sound(path.join(snd_dir, 'Goal Sound.mp3'))
 pygame.mixer.music.set_volume(0.4)
 
 # Carrega o fundo do jogo
@@ -265,6 +266,8 @@ try:
                 
             #Registra gol do player2
             if bolafut.rect.x == 0 and bolafut.rect.y > HEIGHT-360:
+                Goal_sound.play()
+                time.sleep(1)
                 Gol_P2 = Gol_do_player2()
                 all_sprites.add(Gol_P2)
                 bolafut.rect.x = WIDTH - 600
@@ -280,6 +283,8 @@ try:
                 
             #Registra gol do player1   
             if  1150 < bolafut.rect.x < WIDTH and bolafut.rect.y > HEIGHT-360:
+                Goal_sound.play()
+                time.sleep(1)
                 Gol_P1 = Gol_do_player1()
                 all_sprites.add(Gol_P1)
                 bolafut.rect.x = WIDTH - 600
