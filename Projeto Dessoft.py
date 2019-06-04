@@ -422,7 +422,22 @@ try:
                  StaminaE_rect = StaminaE.image.get_rect()
                  StaminaE_rect.centerx = WIDTH-1000
                  StaminaE_rect.bottom = 50
+                 
+            if score2== 7 and score1 == 1:
+                EasterEgg = pygame.image.load(path.join(img_dir,"EASTER_EGG.gif")).convert()
+                EasterEgg = pygame.transform.scale(EasterEgg,(225,225))
+                EasterEgg_rect = EasterEgg.get_rect()
+                EasterEgg_rect.centerx = WIDTH - 1100
+                EasterEgg_rect.bottom = HEIGHT-400
+                screen.blit(EasterEgg, EasterEgg_rect)
                 
+            if score2== 1 and score1 == 7:
+                EasterEgg = pygame.image.load(path.join(img_dir,"EASTER_EGG.gif")).convert()
+                EasterEgg = pygame.transform.scale(EasterEgg,(225,225))
+                EasterEgg_rect = EasterEgg.get_rect()
+                EasterEgg_rect.centerx = WIDTH - 100
+                EasterEgg_rect.bottom = HEIGHT-400
+                screen.blit(EasterEgg, EasterEgg_rect)
                 
             text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
             countdown_surface = score_font.render("{0}".format(int(countdown/60)), True, RED)
