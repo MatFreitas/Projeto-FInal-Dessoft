@@ -13,6 +13,7 @@ from Gol_do_Player1 import Gol_do_player1
 from Travessao_esquerda import TravessaoEsquerda
 from Travessao_direita import TravessaoDireita
 from stamina import stamina
+from staminad import staminad
 
 # Inicialização do Pygame.
 pygame.init()
@@ -63,6 +64,7 @@ GolD= GolDireito()
 TravessaoE= TravessaoEsquerda()
 TravessaoD= TravessaoDireita()
 StaminaE= stamina()
+StaminaD= staminad()
 
 
 # Cria um grupo de sprites e adiciona a nave.
@@ -75,6 +77,7 @@ all_sprites.add(GolD)
 all_sprites.add(TravessaoE)
 all_sprites.add(TravessaoD)
 all_sprites.add(StaminaE)
+all_sprites.add(StaminaD)
 
 #Define a variável e a fonte do score
 score1 = 0
@@ -113,8 +116,8 @@ while running:
 
 # Comando para evitar travamentos.
 try:
-    countdown_especial_p1 = FPS*20
-    countdown_especial_p2 = FPS*5
+    countdown_especial_p1 = FPS*25
+    countdown_especial_p2 = FPS*35
     ESPECIAL_P1 = False
     ESPECIAL_P2 = False
     cont_especial1 = 0
@@ -242,7 +245,7 @@ try:
                     player2.speedx = 10
             if hits1:
                 if ESPECIAL_P1 == True:
-                    bolafut.speedx = 50
+                    bolafut.speedx = 40
                     bolafut.speedy = -12.5
                 else:
                     bolafut.speedx = 15
@@ -256,7 +259,7 @@ try:
                     bolafut.speedy = -15
                 if ESPECIAL_P1 == True:
                     
-                    player2.speedy = -100
+                    player2.speedy = -80
                     bolafut.speedx = -5
                     bolafut.speedy = -20
             if hits3:
@@ -347,18 +350,22 @@ try:
                     ESPECIAL_P1 = False
                     player1.image = pygame.image.load(path.join(img_dir,"ROONEY_v2.png")).convert()
                     StaminaE.image = pygame.image.load(path.join(img_dir, "STAMINA_BLACK.png")).convert()
+                    StaminaD.image = pygame.image.load(path.join(img_dir, "STAMINA_BLACK.png")).convert()
                     
                     #Diminuindo o tamanho da imagem
                     player1.image= pygame.transform.scale(player1.image,(120,160))
                     StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
+                    StaminaD.image = pygame.transform.scale(StaminaD.image,(250,50))
                     
                     #Deixando transparente
                     player1.image.set_colorkey(BLACK)
                     StaminaE.image.set_colorkey(WHITE)
+                    StaminaD.image.set_colorkey(WHITE)
                     
                     #Detalhes sobre o posicionaento
                     player1.rect= player1.image.get_rect()
                     StaminaE.rect= StaminaE.image.get_rect()
+                    StaminaD.rect= StaminaE.image.get_rect()
                     
                     #Centraliza embaixo da tela
                     player1.rect.centerx= WIDTH-1000
@@ -366,6 +373,9 @@ try:
                     
                     StaminaE.rect.centerx = WIDTH-1000
                     StaminaE.rect.bottom = 50
+                    
+                    StaminaD.rect.centerx = WIDTH-200
+                    StaminaD.rect.bottom = 50
             
                     
             if countdown == 0:
@@ -399,7 +409,7 @@ try:
                 message1_rect_p2.midtop = (WIDTH - 300, 300)
                 screen.blit(message1_p2_surface, message1_rect_p2)
                 
-            if countdown_especial_p1 == FPS*15:
+            if countdown_especial_p1 == FPS*19:
                  StaminaE.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL1.jpg")).convert()
                  StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
                  StaminaE.image.set_colorkey(WHITE)
@@ -407,7 +417,7 @@ try:
                  StaminaE_rect.centerx = WIDTH-1000
                  StaminaE_rect.bottom = 50
                  
-            if countdown_especial_p1 == FPS*10:
+            if countdown_especial_p1 == FPS*13:
                  StaminaE.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL2.jpg")).convert()
                  StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
                  StaminaE.image.set_colorkey(WHITE)
@@ -415,7 +425,7 @@ try:
                  StaminaE_rect.centerx = WIDTH-1000
                  StaminaE_rect.bottom = 50
             
-            if countdown_especial_p1 == FPS*5:
+            if countdown_especial_p1 == FPS*7:
                  StaminaE.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL3.jpg")).convert()
                  StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
                  StaminaE.image.set_colorkey(WHITE)
@@ -430,6 +440,39 @@ try:
                  StaminaE_rect = StaminaE.image.get_rect()
                  StaminaE_rect.centerx = WIDTH-1000
                  StaminaE_rect.bottom = 50
+                 
+            if countdown_especial_p2 == FPS*27:
+                 StaminaD.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL1.jpg")).convert()
+                 StaminaD.image = pygame.transform.scale(StaminaD.image,(250,50))
+                 StaminaD.image.set_colorkey(WHITE)
+                 StaminaD_rect = StaminaD.image.get_rect()
+                 StaminaD_rect.centerx = WIDTH-200
+                 StaminaD_rect.bottom = 50
+                 
+            if countdown_especial_p2 == FPS*19:
+                 StaminaD.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL2.jpg")).convert()
+                 StaminaD.image = pygame.transform.scale(StaminaD.image,(250,50))
+                 StaminaD.image.set_colorkey(WHITE)
+                 StaminaD_rect = StaminaD.image.get_rect()
+                 StaminaD_rect.centerx = WIDTH-200
+                 StaminaD_rect.bottom = 50
+            
+            if countdown_especial_p2 == FPS*11:
+                 StaminaD.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL3.jpg")).convert()
+                 StaminaD.image = pygame.transform.scale(StaminaD.image,(250,50))
+                 StaminaD.image.set_colorkey(WHITE)
+                 StaminaD_rect = StaminaD.image.get_rect()
+                 StaminaD_rect.centerx = WIDTH-200
+                 StaminaD_rect.bottom = 50
+                 
+            if countdown_especial_p2 == 0:
+                 StaminaD.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL4.jpg")).convert()
+                 StaminaD.image = pygame.transform.scale(StaminaD.image,(250,50))
+                 StaminaD.image.set_colorkey(WHITE)
+                 StaminaD_rect = StaminaD.image.get_rect()
+                 StaminaD_rect.centerx = WIDTH-200
+                 StaminaD_rect.bottom = 50
+            
                  
             if score2== 7 and score1 == 1:
                 EasterEgg = pygame.image.load(path.join(img_dir,"EASTER_EGG.gif")).convert()
@@ -502,8 +545,8 @@ try:
                         score1 = 0
                         score2 = 0
                         countdown = FPS * 60
-                        countdown_especial_p1 = FPS*20
-                        countdown_especial_p2 = FPS*5
+                        countdown_especial_p1 = FPS*25
+                        countdown_especial_p2 = FPS*35
                         cont_especial1 = 0
                         cont_especial2 = 0
                         OneTry_especial1 = 0
