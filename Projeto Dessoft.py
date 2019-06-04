@@ -346,18 +346,26 @@ try:
                 if Especial_P1_Duration == 0:
                     ESPECIAL_P1 = False
                     player1.image = pygame.image.load(path.join(img_dir,"ROONEY_v2.png")).convert()
+                    StaminaE.image = pygame.image.load(path.join(img_dir, "STAMINA_BLACK.png")).convert()
+                    
                     #Diminuindo o tamanho da imagem
                     player1.image= pygame.transform.scale(player1.image,(120,160))
+                    StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
                     
                     #Deixando transparente
                     player1.image.set_colorkey(BLACK)
+                    StaminaE.image.set_colorkey(WHITE)
                     
                     #Detalhes sobre o posicionaento
                     player1.rect= player1.image.get_rect()
+                    StaminaE.rect= StaminaE.image.get_rect()
                     
                     #Centraliza embaixo da tela
                     player1.rect.centerx= WIDTH-1000
                     player1.rect.bottom= HEIGHT-60
+                    
+                    StaminaE.rect.centerx = WIDTH-1000
+                    StaminaE.rect.bottom = 50
             
                     
             if countdown == 0:
