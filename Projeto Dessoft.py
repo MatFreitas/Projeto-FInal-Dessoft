@@ -29,7 +29,7 @@ clock = pygame.time.Clock()
 
 #Carrega o som do jogo
 pygame.mixer.music.load(path.join(snd_dir, 'Large-crowd-cheering-and-clapping-sound-effect.mp3'))
-pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.set_volume(0.0)
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
@@ -240,7 +240,7 @@ try:
             if hits1:
                 if ESPECIAL_P1 == True:
                     bolafut.speedx = 50
-                    bolafut.speedy = -17.5
+                    bolafut.speedy = -12.5
                 else:
                     bolafut.speedx = 15
                     bolafut.speedy = -15
