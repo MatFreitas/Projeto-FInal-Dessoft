@@ -2,7 +2,7 @@
 import pygame
 from os import path
 
-from init import BLACK, RED, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
+from init import BLACK, RED, WHITE, img_dir, snd_dir, fnt_dir, WIDTH, HEIGHT, FPS
 from player import Player1
 from cpu import CPU
 from bola import Bola
@@ -12,6 +12,7 @@ from Gol_do_Player2 import Gol_do_player2
 from Gol_do_Player1 import Gol_do_player1
 from Travessao_esquerda import TravessaoEsquerda
 from Travessao_direita import TravessaoDireita
+from stamina import stamina
 
 # Inicialização do Pygame.
 pygame.init()
@@ -29,7 +30,7 @@ clock = pygame.time.Clock()
 
 #Carrega o som do jogo
 pygame.mixer.music.load(path.join(snd_dir, 'Large-crowd-cheering-and-clapping-sound-effect.mp3'))
-pygame.mixer.music.set_volume(0.0)
+pygame.mixer.music.set_volume(0.4)
 
 # Carrega o fundo do jogo
 background = pygame.image.load(path.join(img_dir, 'cenario.png')).convert()
@@ -61,6 +62,7 @@ GolE= GolEsquerdo()
 GolD= GolDireito()
 TravessaoE= TravessaoEsquerda()
 TravessaoD= TravessaoDireita()
+StaminaE= stamina()
 
 
 # Cria um grupo de sprites e adiciona a nave.
@@ -72,6 +74,7 @@ all_sprites.add(GolE)
 all_sprites.add(GolD)
 all_sprites.add(TravessaoE)
 all_sprites.add(TravessaoD)
+all_sprites.add(StaminaE)
 
 #Define a variável e a fonte do score
 score1 = 0
@@ -355,7 +358,6 @@ try:
                     #Centraliza embaixo da tela
                     player1.rect.centerx= WIDTH-1000
                     player1.rect.bottom= HEIGHT-60
-                    
             
                     
             if countdown == 0:
@@ -388,6 +390,39 @@ try:
                 message1_rect_p2 = message1_p2_surface.get_rect()
                 message1_rect_p2.midtop = (WIDTH - 300, 300)
                 screen.blit(message1_p2_surface, message1_rect_p2)
+                
+            if countdown_especial_p1 == FPS*15:
+                 StaminaE.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL1.jpg")).convert()
+                 StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
+                 StaminaE.image.set_colorkey(WHITE)
+                 StaminaE_rect = StaminaE.image.get_rect()
+                 StaminaE_rect.centerx = WIDTH-1000
+                 StaminaE_rect.bottom = 50
+                 
+            if countdown_especial_p1 == FPS*10:
+                 StaminaE.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL2.jpg")).convert()
+                 StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
+                 StaminaE.image.set_colorkey(WHITE)
+                 StaminaE_rect = StaminaE.image.get_rect()
+                 StaminaE_rect.centerx = WIDTH-1000
+                 StaminaE_rect.bottom = 50
+            
+            if countdown_especial_p1 == FPS*5:
+                 StaminaE.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL3.jpg")).convert()
+                 StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
+                 StaminaE.image.set_colorkey(WHITE)
+                 StaminaE_rect = StaminaE.image.get_rect()
+                 StaminaE_rect.centerx = WIDTH-1000
+                 StaminaE_rect.bottom = 50
+                 
+            if countdown_especial_p1 == 0:
+                 StaminaE.image= pygame.image.load(path.join(img_dir,"STAMINA_FILL4.jpg")).convert()
+                 StaminaE.image = pygame.transform.scale(StaminaE.image,(250,50))
+                 StaminaE.image.set_colorkey(WHITE)
+                 StaminaE_rect = StaminaE.image.get_rect()
+                 StaminaE_rect.centerx = WIDTH-1000
+                 StaminaE_rect.bottom = 50
+                
                 
             text_surface = score_font.render("{:02d} x {:02d}".format(score2, score1), True, RED)
             countdown_surface = score_font.render("{0}".format(int(countdown/60)), True, RED)
